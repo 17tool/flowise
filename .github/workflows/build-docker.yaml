@@ -21,6 +21,12 @@ jobs:
         username: imbrook
         password: ${{ secrets.ALI_DOCKER_TOKEN }}
     - name: Build the Docker image
-      run: docker build . --file alpine/Dockerfile.compress --tag registry.cn-hangzhou.aliyuncs.com/17ch/flowise:main
-    - name: Publish
-      run: docker push registry.cn-hangzhou.aliyuncs.com/17ch/flowise:main
+      run: docker build . --file alpine/Dockerfile.compress --tag 17ch/flowise:main
+    - name: Build and push
+      uses: docker/build-push-action@v5.3.0
+      with:
+        context: .
+        file: ./Dockerfile
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: 17ch/flowise:main
