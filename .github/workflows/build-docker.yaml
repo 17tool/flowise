@@ -31,5 +31,5 @@ jobs:
         password: ${{ secrets.ALI_DOCKER_TOKEN }}
     - name: Push
       run: |
-        docker tag flowiseai/flowise:latest registry.cn-hangzhou.aliyuncs.com/17ch/flowise:2.0.2
+        docker tag flowiseai/flowise:2.0.2 registry.cn-hangzhou.aliyuncs.com/17ch/flowise:2.0.2
         docker push registry.cn-hangzhou.aliyuncs.com/17ch/flowise:2.0.2
